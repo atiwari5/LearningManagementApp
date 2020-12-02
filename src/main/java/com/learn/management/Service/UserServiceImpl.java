@@ -5,6 +5,9 @@ package com.learn.management.Service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.learn.management.dto.User;
 import com.learn.management.repository.UserRepository;
 
@@ -14,8 +17,10 @@ import com.learn.management.repository.UserRepository;
  * @author Amit Tiwari
  *
  */
+@Service
 public class UserServiceImpl implements  UserService {
 
+	@Autowired
 	private UserRepository userRepository; 
 	
 	@Override
@@ -45,8 +50,8 @@ public class UserServiceImpl implements  UserService {
 
 	@Override
 	public User DeleteUser(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.DeleteUser(id);
+		
 	}
 
 	

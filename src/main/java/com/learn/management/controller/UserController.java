@@ -8,6 +8,7 @@ import com.learn.management.Service.UserService;
 import java.net.URI;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,8 @@ import com.learn.management.dto.User ;
  *
  */
 public class UserController {
-
+	
+	@Autowired
 	private UserService userService ;
 	
 	@GetMapping("/users")
@@ -57,4 +59,6 @@ public class UserController {
 	public User DeleteUser(@PathVariable String id) {
 		return userService.DeleteUser(id);
 	}
+	
+	
 }

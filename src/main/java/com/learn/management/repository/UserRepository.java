@@ -7,12 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import com.learn.management.dto.User;
 
 /**
  * @author Amit Tiwari
  *
  */
+@Repository
 public class UserRepository {
 	
 	List<User> userList = new ArrayList<>(); 
@@ -51,6 +54,24 @@ public class UserRepository {
 			
 			return new User() ;		
 	}
+
+	public User DeleteUser(String id) {
+
+		Optional<User> first = userList.stream()
+										.filter(u -> u.getId()
+										.equals(id))
+										.findFirst();
+		
+		if (first.isPresent()) 
+			{
+			User user = first.get();
+			userList.remove(user);
+			return user;}
+		else 
+			{ return new User() ;}
+		
+	}
+
 
 	
 	
